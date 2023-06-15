@@ -53,7 +53,7 @@ const textGenerationTaxGPT = async (prompt) => {
         const input_index = 'index.json';
   	const index = GPTSimpleVectorIndex.load_from_disk(input_index);
   	const response = index.query(prompt, { response_mode: 'compact' });
-  	const response = JSON.stringify(response);
+  	response = JSON.stringify(response);
         });
 
         return {
