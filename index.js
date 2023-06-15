@@ -51,7 +51,7 @@ const fs = require('fs');
 
 const textGenerationTaxGPT = async (prompt) => {
     try {
-        const input_index = '/aiavatardfes/index.json';
+        const input_index = 'index.json';
 	console.log(`Swavaf1`, input_index);
         const jsonData = fs.readFileSync(input_index, 'utf8');
 	console.log(`Swavaf2`, jsonData);
