@@ -47,20 +47,22 @@ const textGeneration = async (prompt) => {
     }
 };
 
+const fs = require('fs');
+
 const textGenerationTaxGPT = async (prompt) => {
-
     try {
-	    
         const input_index = '/aiavatardfes/index.json';
-  	const index = GPTSimpleVectorIndex.load_from_disk(input_index);
-        console.log(`Swavaf ${index}`);
-  	const response = index.query(prompt, { response_mode: 'compact' });
-  	response = JSON.stringify(response);
-
+	console.log(`Swavaf1`, input_index);
+        const jsonData = fs.readFileSync(input_index, 'utf8');
+	console.log(`Swavaf2`, jsonData);
+        const index = GPTSimpleVectorIndex.load_from_disk(JSON.parse(jsonData));
+        console.log(`Swavaf3`, index);
+        const response = index.query(prompt, { response_mode: 'compact' });
+        const responseString = JSON.stringify(response);
 
         return {
             status: 1,
-            response: `${response.text}`
+            response: responseString
         };
     } catch (error) {
         return {
