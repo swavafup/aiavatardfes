@@ -47,15 +47,13 @@ const textGeneration = async (prompt) => {
     }
 };
 
-const fetch = require('node-fetch');
+const axios = require('axios');
 
 const textGenerationTaxGPT = async (prompt) => {
   try {
     const fileUrl = 'https://raw.githubusercontent.com/swavafup/aiavatardfes/main/path_file/index.json';
-    const datafetch = await fetch(fileUrl);
-    console.log('Swavaf1:', datafetch);
-    const jsonData = await datafetch.json();
-    console.log('Swavaf2:', jsonData);
+    const response = await axios.get(fileUrl);
+    const jsonData = response.data;
     const index = GPTSimpleVectorIndex.load_from_disk(jsonData);
     console.log('Swavaf3:', index);
     const response = index.query(prompt, { response_mode: 'compact' });
@@ -73,7 +71,6 @@ const textGenerationTaxGPT = async (prompt) => {
     };
   }
 };
-
 async function getgit(owner, repo, path) { 
     // A function to fetch files from github using the api 
     
