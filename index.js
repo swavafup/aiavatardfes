@@ -123,6 +123,35 @@ webApp.post('/dialogflow', async (req, res) => {
     }
 });
 
+webApp.post('/dialogflowtaxgpt', async (req, res) => {
+    
+    let action = req.body.queryResult.action;
+    let queryText = req.body.queryResult.queryText;
+
+    if (action === 'input.unknown') {
+        let result = await textGenerationTaxGPT(queryText);
+        if (result.status == 1) {
+            res.send(
+                {
+                    fulfillmentText: result.response
+                }
+            );
+        } else {
+            res.send(
+                {
+                    fulfillmentText: `Sorry, I'm not able to help with that.`
+                }
+            );
+        }
+    } else {
+        res.send(
+            {
+                fulfillmentText: `No handler for the action ${action}.`
+            }
+        );
+    }
+});
+
 
 webApp.listen(PORT, () => {
     console.log(`Server is up and running at ${PORT}`);
