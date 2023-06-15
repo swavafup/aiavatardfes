@@ -55,10 +55,12 @@ const textGenerationTaxGPT = async (prompt) => {
     const repo = 'aiavatardfes';
     const path = 'path_file';
     const fileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+    console.log('Swavaf1:', fileUrl);
     const response = await axios.get(fileUrl);
+    console.log('Swavaf2:', response);
     const content = Buffer.from(response.data.content, 'base64').toString('utf-8');
     const index = GPTSimpleVectorIndex.load_from_disk(JSON.parse(content));
-    console.log('Swavaf2:', index);
+    console.log('Swavaf3:', index);
     const queryResponse = index.query(prompt, { response_mode: 'compact' });
     const responseString = JSON.stringify(queryResponse);
 
