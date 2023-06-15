@@ -59,8 +59,9 @@ const textGenerationTaxGPT = async (prompt) => {
     const response = await axios.get(fileUrl);
     console.log('Swavaf2:', response);
     const content = Buffer.from(response.data.content, 'base64').toString('utf-8');
+    console.log('Swavaf3:', content);
     const index = GPTSimpleVectorIndex.load_from_disk(JSON.parse(content));
-    console.log('Swavaf3:', index);
+    console.log('Swavaf4:', index);
     const queryResponse = index.query(prompt, { response_mode: 'compact' });
     const responseString = JSON.stringify(queryResponse);
 
