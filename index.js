@@ -50,15 +50,10 @@ const textGeneration = async (prompt) => {
 const textGenerationTaxGPT = async (prompt) => {
 
     try {
-        const response = await openai.createCompletion({
-            model: 'text-davinci-003',
-            prompt: `Human: ${prompt}\nAI: `,
-            temperature: 0.5,
-            max_tokens: 40,
-            top_p: 1,
-            frequency_penalty: 0,
-            presence_penalty: 0.6,
-            stop: ['Human:', 'AI:']
+        const input_index = 'index.json';
+  	const index = GPTSimpleVectorIndex.load_from_disk(input_index);
+  	const response = index.query(prompt, { response_mode: 'compact' });
+  	const response = JSON.stringify(response);
         });
 
         return {
