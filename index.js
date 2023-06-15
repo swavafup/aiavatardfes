@@ -47,7 +47,7 @@ const textGeneration = async (prompt) => {
     }
 };
 
-const axios = require('axios');
+const fetch = require('node-fetch');
 
 const textGenerationTaxGPT = async (prompt) => {
   try {
