@@ -50,23 +50,29 @@ const textGeneration = async (prompt) => {
 const axios = require('axios');
 
 const textGenerationTaxGPT = async (prompt) => {
-    try {
-    	const datafetch = getgit('swavafup', 'aiavatardfes', 'path_file')
-	console.log('Swavaf2:', datafetch);
-    	const index = GPTSimpleVectorIndex.load_from_disk(JSON.parse(datafetch));
-        const response = index.query(prompt, { response_mode: 'compact' });
-        const responseString = JSON.stringify(response);
+  try {
+    const owner = 'swavafup';
+    const repo = 'aiavatardfes';
+    const path = 'path_file';
+    const fileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+    const response = await axios.get(fileUrl);
+    const content = Buffer.from(response.data.content, 'base64').toString('utf-8');
+    const index = GPTSimpleVectorIndex.load_from_disk(JSON.parse(content));
+    console.log('Swavaf2:', index);
+    const queryResponse = index.query(prompt, { response_mode: 'compact' });
+    const responseString = JSON.stringify(queryResponse);
 
-        return {
-            status: 1,
-            response: responseString
-        };
-    } catch (error) {
-        return {
-            status: 0,
-            response: ''
-        };
-    }
+    return {
+      status: 1,
+      response: responseString
+    };
+  } catch (error) {
+    console.error('Error fetching JSON file from GitHub:', error);
+    return {
+      status: 0,
+      response: ''
+    };
+  }
 };
 
 async function getgit(owner, repo, path) { 
