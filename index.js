@@ -52,6 +52,7 @@ const textGenerationTaxGPT = async (prompt) => {
     try {
 	    
         const input_index = 'index.json';
+	 console.log(`Swavaf ${input_index}`);
   	const index = GPTSimpleVectorIndex.load_from_disk(input_index);
   	const response = index.query(prompt, { response_mode: 'compact' });
   	response = JSON.stringify(response);
