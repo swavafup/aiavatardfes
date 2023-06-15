@@ -52,8 +52,8 @@ const axios = require('axios');
 const textGenerationTaxGPT = async (prompt) => {
   try {
     const fileUrl = 'https://raw.githubusercontent.com/swavafup/aiavatardfes/main/path_file/index.json';
-    const response = await axios.get(fileUrl);
-    const jsonData = response.data;
+    const datafetch = await axios.get(fileUrl);
+    const jsonData = datafetch.data;
     const index = GPTSimpleVectorIndex.load_from_disk(jsonData);
     console.log('Swavaf3:', index);
     const response = index.query(prompt, { response_mode: 'compact' });
