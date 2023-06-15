@@ -51,7 +51,7 @@ const axios = require('axios');
 
 const textGenerationTaxGPT = async (prompt) => {
     try {
-    	const datafetch = getgit ('swavafup', 'aiavatardfes', 'path_file')
+    	const datafetch = getgit('swavafup', 'aiavatardfes', 'path_file')
 	console.log('Swavaf2:', datafetch);
     	const index = GPTSimpleVectorIndex.load_from_disk(JSON.parse(datafetch));
         const response = index.query(prompt, { response_mode: 'compact' });
@@ -69,7 +69,7 @@ const textGenerationTaxGPT = async (prompt) => {
     }
 };
 
-export async function getgit (owner, repo, path) { 
+function getgit(owner, repo, path) { 
     // A function to fetch files from github using the api 
     
   let data = await fetch (
