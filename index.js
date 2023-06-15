@@ -47,27 +47,27 @@ const textGeneration = async (prompt) => {
     }
 };
 
-// const textGenerationTaxGPT = async (prompt) => {
+const textGenerationTaxGPT = async (prompt) => {
 
-//     try {
+    try {
 	    
-//         const input_index = 'index.json';
-//   	const index = GPTSimpleVectorIndex.load_from_disk(input_index);
-//   	const response = index.query(prompt, { response_mode: 'compact' });
-//   	response = JSON.stringify(response);
+        const input_index = 'index.json';
+  	const index = GPTSimpleVectorIndex.load_from_disk(input_index);
+  	const response = index.query(prompt, { response_mode: 'compact' });
+  	response = JSON.stringify(response);
 
 
-//         return {
-//             status: 1,
-//             response: `${response.data.choices[0].text}`
-//         };
-//     } catch (error) {
-//         return {
-//             status: 0,
-//             response: ''
-//         };
-//     }
-// };
+        return {
+            status: 1,
+            response: `${response.text}`
+        };
+    } catch (error) {
+        return {
+            status: 0,
+            response: ''
+        };
+    }
+};
 
 
 const formatResponseForDialogflow = (texts, sessionInfo, targetFlow, targetPage) => {
@@ -145,52 +145,36 @@ webApp.post('/dialogflow', async (req, res) => {
     }
 });
 
-// webApp.post('/dialogflowtaxgpt', async (req, res) => {
+webApp.post('/dialogflowtaxgpt', async (req, res) => {
     
-//     let action = req.body.queryResult.action;
-//     let queryText = req.body.queryResult.queryText;
+    let action = req.body.queryResult.action;
+    let queryText = req.body.queryResult.queryText;
 
-//     if (action === 'input.unknown') {
-//         let result = await textGenerationTaxGPT(queryText);
-//         if (result.status == 1) {
-//             res.send(
-//                 {
-//                     fulfillmentText: result.response
-//                 }
-//             );
-//         } else {
-//             res.send(
-//                 {
-//                     fulfillmentText: `Sorry, I'm not able to help with that.`
-//                 }
-//             );
-//         }
-//     } else {
-//         res.send(
-//             {
-//                 fulfillmentText: `No handler for the action ${action}.`
-//             }
-//         );
-//     }
-// });
-
-webApp.post('/dialogflowtaxgpt', (req, res) => {
-  const query = req.body.query;
-
-  // Process the query and generate a response
-  const input_index = 'index.json';
-  const index = GPTSimpleVectorIndex.load_from_disk(input_index);
-  const response = index.query(query, { response_mode: 'compact' });
-  const response_str = JSON.stringify(response);
-
-  // Send the response back to the webhook caller
-  res.json({ response: response_str });
-  // res.send(
-  //           {
-  //               fulfillmentText: "Hello Swavaf"
-  //           }
-  //       );
+    if (action === 'input.unknown') {
+        let result = await textGenerationTaxGPT(queryText);
+        if (result.status == 1) {
+            res.send(
+                {
+                    fulfillmentText: result.response
+                }
+            );
+        } else {
+            res.send(
+                {
+                    fulfillmentText: `Sorry, I'm not able to help with that.`
+                }
+            );
+        }
+    } else {
+        res.send(
+            {
+                fulfillmentText: `No handler for the action ${action}.`
+            }
+        );
+    }
 });
+
+
 
 
 webApp.listen(PORT, () => {
