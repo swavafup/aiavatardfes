@@ -184,12 +184,12 @@ webApp.post('/dialogflowtaxgpt', (req, res) => {
   const response_str = JSON.stringify(response);
 
   // Send the response back to the webhook caller
-  // res.json({ response: response_str });
-  res.send(
-            {
-                fulfillmentText: "Hello Swavaf"
-            }
-        );
+  res.json({ response: response_str });
+  // res.send(
+  //           {
+  //               fulfillmentText: "Hello Swavaf"
+  //           }
+  //       );
 });
 
 
