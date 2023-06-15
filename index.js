@@ -69,7 +69,7 @@ const textGenerationTaxGPT = async (prompt) => {
     }
 };
 
-function getgit(owner, repo, path) { 
+async function getgit(owner, repo, path) { 
     // A function to fetch files from github using the api 
     
   let data = await fetch (
