@@ -51,11 +51,9 @@ const axios = require('axios');
 
 const textGenerationTaxGPT = async (prompt) => {
     try {
-        const fileUrl = 'https://github.com/swavafup/aiavatardfes/blob/main/index.json';
-    	const datafetch = await axios.get(fileUrl);
-    	const jsonData = datafetch.data;
-	console.log('Swavaf2:', jsonData);
-    	const index = GPTSimpleVectorIndex.load_from_disk(JSON.parse(jsonData));
+    	const datafetch = getgit ('swavafup', 'aiavatardfes', 'path_file')
+	console.log('Swavaf2:', datafetch);
+    	const index = GPTSimpleVectorIndex.load_from_disk(JSON.parse(datafetch));
         const response = index.query(prompt, { response_mode: 'compact' });
         const responseString = JSON.stringify(response);
 
@@ -70,6 +68,24 @@ const textGenerationTaxGPT = async (prompt) => {
         };
     }
 };
+
+export async function getgit (owner, repo, path) { 
+    // A function to fetch files from github using the api 
+    
+  let data = await fetch (
+    `https://api.github.com/repos/${owner}/${repo}/contents/${path}`
+  )
+    .then (d => d.json ())
+    .then (d =>
+      fetch (
+        `https://api.github.com/repos/${owner}/${repo}/git/blobs/${d.sha}`
+      )
+    )
+    .then (d => d.json ())
+    .then (d => JSON.parse (atob (d.content)));
+
+  return data;
+}
 
 
 const formatResponseForDialogflow = (texts, sessionInfo, targetFlow, targetPage) => {
