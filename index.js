@@ -47,27 +47,27 @@ const textGeneration = async (prompt) => {
     }
 };
 
-const textGenerationTaxGPT = async (prompt) => {
+// const textGenerationTaxGPT = async (prompt) => {
 
-    try {
+//     try {
 	    
-        const input_index = 'index.json';
-  	const index = GPTSimpleVectorIndex.load_from_disk(input_index);
-  	const response = index.query(prompt, { response_mode: 'compact' });
-  	response = JSON.stringify(response);
+//         const input_index = 'index.json';
+//   	const index = GPTSimpleVectorIndex.load_from_disk(input_index);
+//   	const response = index.query(prompt, { response_mode: 'compact' });
+//   	response = JSON.stringify(response);
 
 
-        return {
-            status: 1,
-            response: `${response.data.choices[0].text}`
-        };
-    } catch (error) {
-        return {
-            status: 0,
-            response: ''
-        };
-    }
-};
+//         return {
+//             status: 1,
+//             response: `${response.data.choices[0].text}`
+//         };
+//     } catch (error) {
+//         return {
+//             status: 0,
+//             response: ''
+//         };
+//     }
+// };
 
 
 const formatResponseForDialogflow = (texts, sessionInfo, targetFlow, targetPage) => {
@@ -184,7 +184,12 @@ webApp.post('/dialogflowtaxgpt', (req, res) => {
   const response_str = JSON.stringify(response);
 
   // Send the response back to the webhook caller
-  res.json({ response: response_str });
+  // res.json({ response: response_str });
+  res.send(
+            {
+                fulfillmentText: response_str
+            }
+        );
 });
 
 
