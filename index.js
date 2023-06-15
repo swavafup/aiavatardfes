@@ -53,6 +53,7 @@ const textGenerationTaxGPT = async (prompt) => {
   try {
     const fileUrl = 'https://raw.githubusercontent.com/swavafup/aiavatardfes/main/path_file/index.json';
     const datafetch = await axios.get(fileUrl);
+    console.log('Swavaf0:', datafetch);
     const jsonData = datafetch.data;
     console.log('Swavaf1:', jsonData);
     const index = GPTSimpleVectorIndex.load_from_disk(jsonData);
