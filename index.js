@@ -48,51 +48,6 @@ const textGeneration = async (prompt) => {
     }
 };
 
-const axios = require('axios');
-
-const textGenerationTaxGPT = async (prompt) => {
-  try {
-    const fileUrl = 'https://raw.githubusercontent.com/swavafup/aiavatardfes/main/path_file/index.json';
-    const datafetch = await axios.get(fileUrl);
-    console.log('Swavaf0:', datafetch);
-    const jsonData = datafetch.data;
-    console.log('Swavaf1:', jsonData);
-    // const index = GPTSimpleVectorIndex.load_from_disk(jsonData);
-    // console.log('Swavaf3:', index);
-    const response = jsonData.query(prompt, { response_mode: 'compact' });
-    const responseString = JSON.stringify(response);
-
-    return {
-      status: 1,
-      response: responseString
-    };
-  } catch (error) {
-    console.error('Error fetching JSON file from GitHub:', error);
-    return {
-      status: 0,
-      response: ''
-    };
-  }
-};
-async function getgit(owner, repo, path) { 
-    // A function to fetch files from github using the api 
-    
-  let data = await fetch (
-    `https://api.github.com/repos/${owner}/${repo}/contents/${path}`
-  )
-    .then (d => d.json ())
-    .then (d =>
-      fetch (
-        `https://api.github.com/repos/${owner}/${repo}/git/blobs/${d.sha}`
-      )
-    )
-    .then (d => d.json ())
-    .then (d => JSON.parse (atob (d.content)));
-
-  return data;
-}
-
-
 const formatResponseForDialogflow = (texts, sessionInfo, targetFlow, targetPage) => {
 
     messages = []
@@ -146,35 +101,6 @@ webApp.post('/dialogflow', async (req, res) => {
 
     if (action === 'input.unknown') {
         let result = await textGeneration(queryText);
-        if (result.status == 1) {
-            res.send(
-                {
-                    fulfillmentText: result.response
-                }
-            );
-        } else {
-            res.send(
-                {
-                    fulfillmentText: `Sorry, I'm not able to help with that.`
-                }
-            );
-        }
-    } else {
-        res.send(
-            {
-                fulfillmentText: `No handler for the action ${action}.`
-            }
-        );
-    }
-});
-
-webApp.post('/dialogflowtaxgpt', async (req, res) => {
-    
-    let action = req.body.queryResult.action;
-    let queryText = req.body.queryResult.queryText;
-
-    if (action === 'input.unknown') {
-        let result = await textGenerationTaxGPT(queryText);
         if (result.status == 1) {
             res.send(
                 {
