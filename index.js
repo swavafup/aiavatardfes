@@ -1,6 +1,5 @@
 const express = require('express');
 const { Configuration, OpenAIApi } = require("openai");
-const { GPTSimpleVectorIndex } = require("gpt_index");
 
 require('dotenv').config();
 
