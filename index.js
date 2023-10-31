@@ -38,7 +38,7 @@ const textGeneration = async (prompt) => {
 
         return {
             status: 1,
-            response: 'The IT Marathon is more than just a competition; it is a celebration of the incredible potential that resides within our students and the limitless opportunities that the field of Information Technology offers. Over the past years, we have had the privilege of witnessing numerous talented students present their fantastic projects.Lets take a moment to reflect on the previous IT Marathons.'
+            response: 'For IT Marathon 2023, our theme is AI for a Sustainable Future. We are excited to have projects from various schools. This competition will inspire creative thinking and effective collaboration, fostering young tech enthusiasts. We are proud to be your partners in this exciting journey.We would also like to extend an invitation to become more acquainted with the AI and Robotics Lab, which is located on Level 3. In our lab, we have a multitude of other robotic companions and exciting projects. Our projects span a wide range of areas. We have put together a brief video to provide you with a quick introduction to the IRI Lab. We hope it offers you insights into our world.'
 	    // response: `${response.data.choices[0].text}`
         };
     } catch (error) {
