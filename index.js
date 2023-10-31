@@ -38,7 +38,7 @@ const textGeneration = async (prompt) => {
 
         return {
             status: 1,
-            response: 'The IT Marathon is more than just a competition; it is a celebration of the incredible potential that resides within our students and the limitless opportunities that the field of Information Technology offers. Over the past years, we have had the privilege of witnessing numerous talented students present their fantastic projects.Let's take a moment to reflect on the previous IT Marathons.'
+            response: 'The IT Marathon is more than just a competition; it is a celebration of the incredible potential that resides within our students and the limitless opportunities that the field of Information Technology offers. Over the past years, we have had the privilege of witnessing numerous talented students present their fantastic projects.Lets take a moment to reflect on the previous IT Marathons.'
 	    // response: `${response.data.choices[0].text}`
         };
     } catch (error) {
