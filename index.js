@@ -38,7 +38,7 @@ const textGeneration = async (prompt) => {
 
         return {
             status: 1,
-            response: 'Assalamu alaikkum Warahmatullahi Wabarakathu'
+            response: 'Asalamu alaikkum Warahmatullahi Wabarakathu'
 	    // response: `${response.data.choices[0].text}`
         };
     } catch (error) {
