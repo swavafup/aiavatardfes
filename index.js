@@ -38,8 +38,8 @@ const textGeneration = async (prompt) => {
 
         return {
             status: 1,
-            // response: 'For IT Marathon 2023, our theme is AI for a Sustainable Future. We are excited to have projects from various schools. This competition will inspire creative thinking and effective collaboration, fostering young tech enthusiasts. We are proud to be your partners in this exciting journey.We would also like to extend an invitation to become more acquainted with the AI and Robotics Lab, which is located on Level 3. In our lab, we have a multitude of other robotic companions and exciting projects. Our projects span a wide range of areas. We have put together a brief video to provide you with a quick introduction to the AI and Robotics Lab. We hope it offers you insights into our world.'
-	    response: `${response.data.choices[0].text}`
+            response: 'وعليكم السلام ورحمة الله وبركاته'
+	    //response: `${response.data.choices[0].text}`
         };
     } catch (error) {
         return {
