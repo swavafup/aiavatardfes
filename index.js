@@ -38,7 +38,7 @@ const textGeneration = async (prompt) => {
 
         return {
             status: 1,
-            response: 'وعليكم السلام ورحمة الله وبركاته'
+            response: 'السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ'
 	    //response: `${response.data.choices[0].text}`
         };
     } catch (error) {
