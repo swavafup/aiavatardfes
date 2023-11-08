@@ -38,8 +38,8 @@ const textGeneration = async (prompt) => {
 
         return {
             status: 1,
-            // response: 'Yes,why not Lets see the videos together.'
-	    response: `${response.data.choices[0].text}`
+            response: 'Hold a second. Dont take my job.'
+	    //response: `${response.data.choices[0].text}`
         };
     } catch (error) {
         return {
