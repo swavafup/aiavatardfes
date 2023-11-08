@@ -38,7 +38,7 @@ const textGeneration = async (prompt) => {
 
         return {
             status: 1,
-            response: 'I will give it my all. Its the moment to let our robotic buddies take the spotlight'
+            response: 'Ladies and gentlemen, distinguished guests, and dear participants, Welcome to the IT Marathon 2023. My name is Salama. Today, we gather here at the United Arab Emirates University to celebrate a thrilling competition of innovation.'
 	    //response: `${response.data.choices[0].text}`
         };
     } catch (error) {
