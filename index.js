@@ -38,7 +38,7 @@ const textGeneration = async (prompt) => {
 
         return {
             status: 1,
-            response: 'I am your friendly humanoid avatar. I am here to rock the IT Marathon'
+            response: 'I will give it a try.'
 	    //response: `${response.data.choices[0].text}`
         };
     } catch (error) {
