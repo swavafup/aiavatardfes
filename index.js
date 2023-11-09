@@ -38,7 +38,7 @@ const textGeneration = async (prompt) => {
 
         return {
             status: 1,
-            response: 'I will give it a try.'
+            response: 'Ladies and gentlemen, distinguished guests, and dear participants. Welcome to the IT Marathon 2023. My name is Lin AI, which is name I just came up with. Today, we gather here at the United Arab Emirates University to celebrate a thrilling competition of innovation. The IT Marathon celebrates student potential and limitless tech opportunities, showcasing years of talented participants innovative projects. Lets take a moment to reflect on the previous IT Marathons.'
 	    //response: `${response.data.choices[0].text}`
         };
     } catch (error) {
