@@ -38,8 +38,8 @@ const textGeneration = async (prompt) => {
 
         return {
             status: 1,
-            response: 'For IT Marathon 2023, our theme is AI for a Sustainable Future. We are excited to have projects from various schools, in which we have around 120 schools participated in this marathon with more than 300 students. This competition will inspire creative thinking and effective collaboration, fostering young tech enthusiasts. We are proud to be your partners in this exciting journey. I believe every participant today will enjoy todays event. Now I would like to invite Asma to take over the stage.'
-	    //response: `${response.data.choices[0].text}`
+            // response: 'For IT Marathon 2023, our theme is AI for a Sustainable Future. We are excited to have projects from various schools, in which we have around 120 schools participated in this marathon with more than 300 students. This competition will inspire creative thinking and effective collaboration, fostering young tech enthusiasts. We are proud to be your partners in this exciting journey. I believe every participant today will enjoy todays event. Now I would like to invite Asma to take over the stage.'
+	    response: `${response.data.choices[0].text}`
         };
     } catch (error) {
         return {
