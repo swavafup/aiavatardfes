@@ -38,7 +38,7 @@ const textGeneration = async (prompt) => {
 
         return {
             status: 1,
-	    response: 'Overspeeding. Slow down.'
+	    response: 'Obstacles ahead, kindly note.'
 	    // response: `${response.data.choices[0].text}`
         };
     } catch (error) {
