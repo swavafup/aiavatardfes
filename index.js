@@ -38,8 +38,8 @@ const textGeneration = async (prompt) => {
 
         return {
             status: 1,
-	    response: 'Fatigued after long journey. Rest.'
-	    // response: `${response.data.choices[0].text}`
+	    // response: 'Fatigued after long journey. Rest.'
+	    response: `${response.data.choices[0].text}`
         };
     } catch (error) {
         return {
