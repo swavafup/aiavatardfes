@@ -38,7 +38,7 @@ const textGeneration = async (prompt) => {
 
         return {
             status: 1,
-	    response: 'Please adjust your rear mirrors and make sure they provide a clear view.'
+	    response: 'You are over speeding now. Please slow down.'
 	    // response: `${response.data.choices[0].text}`
         };
     } catch (error) {
