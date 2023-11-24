@@ -38,7 +38,7 @@ const textGeneration = async (prompt) => {
 
         return {
             status: 1,
-	    response: 'Before starting the car, make sure your seatbelt is securely fastened.'
+	    response: 'It is always good to check if you have enough fuel for your journey.'
 	    // response: `${response.data.choices[0].text}`
         };
     } catch (error) {
