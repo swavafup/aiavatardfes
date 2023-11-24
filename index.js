@@ -38,7 +38,7 @@ const textGeneration = async (prompt) => {
 
         return {
             status: 1,
-	    response: 'Before starting, fasten your seatbelt.'
+	    response: 'Ensure sufficient fuel for your journey.'
 	    // response: `${response.data.choices[0].text}`
         };
     } catch (error) {
