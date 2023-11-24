@@ -38,7 +38,7 @@ const textGeneration = async (prompt) => {
 
         return {
             status: 1,
-	    response: 'It is always good to check if you have enough fuel for your journey.'
+	    response: 'Please adjust your rear mirrors and make sure they provide a clear view.'
 	    // response: `${response.data.choices[0].text}`
         };
     } catch (error) {
