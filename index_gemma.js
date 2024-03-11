@@ -62,5 +62,9 @@ const getResponse = async (inputText) => {
     }
 
     const responseData = await response.json();
-    return responseData[0].generated_text;
+    const generatedText = responseData[0].generated_text;
+
+    const cleanedResponse = generatedText.replace(/\*/g, '');
+    
+    return cleanedResponse;
 };
