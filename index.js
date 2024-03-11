@@ -16,7 +16,7 @@ webApp.get('/', (req, res) => {
 });
 
 webApp.post('/dialogflow', async (req, res) => {
-    const userInput = req.body.contents[0].parts[0].text;
+    const userInput = req.body.queryResult.queryText;
     sendMessage(userInput);
     getResponse(userInput)
         .then(response => {
